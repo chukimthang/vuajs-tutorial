@@ -4,3 +4,7 @@
 
 - Các phương thức thao tác với mảng: push(), pop(), shift(), unshift(), splice(), sort(), reverse()
 - key modifier: .enter, .tab .delete (dùng cho cả hai phím “Delete” và “←”), .esc, .space, .up, .down, .left, .right
+
+## Note 
+- Nếu truyền tham số vào trong template thì nhất định phải có pop 
+- props: ['myMessage'] được viết theo kiểu camelCase sẽ được chuyển thành kebab-case trong HTML ( my-message)

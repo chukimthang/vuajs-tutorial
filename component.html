@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <script language="javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="example">
+    <my-component></my-component>
+  </div>
+
+  <div id="example-2">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+  </div>
+
+  
+
+  <script type="text/javascript">
+    // ============= Đăng kí ở cấp toàn cục ================
+    
+    // đăng kí
+    Vue.component('my-component', {
+      template: '<div>Đây là một component!</div>'
+    })
+
+    // tạo đối tượng Vue gốc
+    new Vue({
+      el: '#example'
+    })
+
+    // ============= Đăng kí ở cấp cục bộ ================
+    // var Child = {
+    //   template: '<div>Đây là một component!</div>'
+    // }
+
+    // new Vue({
+    //   el: '#example',
+    //   components: {
+    //     'my-component': Child
+    //   }
+    // })
+    
+    var data = { counter: 0 }
+
+    Vue.component('simple-counter', {
+      template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+      data: function () {
+        return {
+          counter: 0
+        }
+      }
+    })
+
+    new Vue({
+      el: '#example-2'
+    })
+  </script>
+</body>
+</html>
