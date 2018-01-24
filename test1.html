@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <script language="javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <!-- example 1 -->
+  <div id="app">
+    {{ message }}
+  </div>
+  <br>
+
+  <!-- example 2 -->
+  <div id="app-2">
+    <span v-bind:title="message">
+      Rê chuột lên đây một vài giây để xem thuộc tính "title" được bind!
+    </span>
+  </div>
+  <br>
+
+  <!-- example 3 -->
+  <div id="app-3">
+    <span v-if="seen">Thoắt ẩn thoắt hiện</span>
+  </div>
+  <br>
+
+  <!-- example 4 -->
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+  <br>
+
+  <!-- example 5 -->
+  <div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+  <br>
+
+  <!-- example 6 -->
+  <div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+  </div>
+  <br>
+
+  <script type="text/javascript">
+    // js example 1
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Do you wanna build a Vue app?'
+      }
+    })
+    // alert(app.message);
+    
+    // js example 2
+    var app2 = new Vue({
+      el: '#app-2',
+      data: {
+        message: 'Bạn đã mở trang này vào ' + new Date().toLocaleString()
+      }
+    })
+
+    // js example 3
+    var app3 = new Vue({
+      el: '#app-3',
+      data: {
+        seen: true // true thì hiện message, false thì ẩn
+      }
+    })
+
+    // js example 4
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [
+          { text: 'Học JavaScript' },
+          { text: 'Học Vue' },
+          { text: 'Xây dựng cái gì đó hay ho' }
+        ]
+      }
+    })
+    app4.todos.push({ text: 'Nghỉ ngơi' })
+
+    // js example 5
+    var app5 = new Vue({
+      el: '#app-5',
+      data: {
+        message: 'qua lại khách chờ sông lặng sóng'
+      },
+      methods: {
+        reverseMessage: function () {
+          this.message = this.message.split(' ').reverse().join(' ')
+        }
+      }
+    })
+
+    // js example 6
+    var app6 = new Vue({
+      el: '#app-6',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+
+    // Đăng kí 1 component trong vue
+    Vue.component('todo-item', {
+      template: '<li>Đây là một đề mục todo</li>'
+    })
+  </script>
+</body>
+</html>
