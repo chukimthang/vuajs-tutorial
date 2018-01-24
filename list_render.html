@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <script language="javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <!-- v-for vs array -->
+  <ul id="example-1">
+    <li v-for="item in items">
+      {{ item.name }}
+    </li>
+  </ul>
+  <hr>
+
+  <ul id="example-2">
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.name }}
+    </li>
+  </ul>
+  <hr>
+
+  <!-- v-for vs object -->
+  <ul id="example-3" class="demo">
+    <!-- <li v-for="value in object">
+      {{ value }}
+    </li> -->
+   <!--  <div v-for="(value, key) in object">
+      {{ key }}: {{ value }}
+    </div> -->
+    <div v-for="(value, key, index) in object">
+      {{ index }}. {{ key }}: {{ value }}
+    </div>
+  </ul>
+
+  <script type="text/javascript">
+    var example1 = new Vue({
+      el: '#example-1',
+      data: {
+        items: [
+          { name: 'Cà phê' },
+          { name: 'Trà đặc' },
+          { name: 'Bò húc' }
+        ]
+      }
+    })
+
+    var example2 = new Vue({
+      el: '#example-2',
+      data: {
+        parentMessage: 'Parent',
+        items: [
+          { name: 'Cà phê' },
+          { name: 'Trà đặc' },
+          { name: 'Bò húc' }
+        ]
+      }
+    })
+    // add item array
+    example2.items.push({ name: 'Nước chanh' });
+
+    // tìm kết quả có chứa kí tự c
+    example2.items = example2.items.filter(function (item) {
+      return item.name.match(/c/)
+    })
+
+    new Vue({
+      el: '#example-3',
+      data: {
+        object: {
+          'họ': 'Bành',
+          'tên': 'Tổ',
+          'tuổi': 800
+        }
+      }
+    })
+  </script>
+</body>
+</html>
